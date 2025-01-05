@@ -9,10 +9,12 @@ public class FlowerCollision : MonoBehaviour
 
     Collider2D beeCollider;
     Collider2D flowerCollider;
+    Nectar flowerNectar;
     private void Awake()
     {
         beeCollider = bee.GetComponent<Collider2D>();
         flowerCollider = GetComponent<Collider2D>();
+        flowerNectar = GetComponent<Nectar>();
     }
     // Start is called before the first frame update
     void Start()
@@ -25,7 +27,11 @@ public class FlowerCollision : MonoBehaviour
     {
         if (beeCollider.bounds.Intersects(flowerCollider.bounds))
         {
-            Debug.Log("hit!");
+            //Debug.Log("hit!");
+            if(Input.GetKeyDown(KeyCode.Space) && flowerNectar.FlowerHasNectar)
+            {
+                flowerNectar.CollectNectar();
+            }
         }
     }
 }
