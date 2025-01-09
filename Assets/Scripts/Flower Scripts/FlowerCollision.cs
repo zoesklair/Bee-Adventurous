@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FlowerCollision : MonoBehaviour
 {
-    [SerializeField]
     GameObject bee;
 
     Collider2D beeCollider;
@@ -12,6 +11,7 @@ public class FlowerCollision : MonoBehaviour
     Nectar flowerNectar;
     private void Awake()
     {
+        bee = GameObject.Find("Bee");
         beeCollider = bee.GetComponent<Collider2D>();
         flowerCollider = GetComponent<Collider2D>();
         flowerNectar = GetComponent<Nectar>();

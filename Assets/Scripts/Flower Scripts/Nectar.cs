@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Nectar : MonoBehaviour
 {
-    [SerializeField]
     GameObject bee;
     Energy beeEnergy;
-    [SerializeField]
-    GameObject nectarObjectPrefab;
-    GameObject nectarObjectInstance;
+
+    GameObject nectarObject;
 
     private float energyFromNectar = 20;
 
@@ -18,13 +16,15 @@ public class Nectar : MonoBehaviour
 
     private void Awake()
     {
+        bee = GameObject.Find("Bee");
         beeEnergy = bee.GetComponent<Energy>();
+        nectarObject = gameObject.transform.GetChild(0).gameObject;
     }
     // Start is called before the first frame update
     void Start()
     {
+        //flower begins with nectar
         flowerHasNectar = true;
-        nectarObjectInstance = Instantiate(nectarObjectPrefab, transform);
     }
 
     // Update is called once per frame
@@ -38,6 +38,6 @@ public class Nectar : MonoBehaviour
         //energy go up
         beeEnergy.UpdateEnergy(energyFromNectar);
         flowerHasNectar = false;
-        Destroy(nectarObjectInstance);
+        Destroy(nectarObject);
     }
 }
