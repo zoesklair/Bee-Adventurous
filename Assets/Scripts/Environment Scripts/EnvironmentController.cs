@@ -53,7 +53,6 @@ public class EnvironmentController : MonoBehaviour
         //Debug.Log("make block");
         GameObject groundBlock = Instantiate(groundBlockPrefab);
         Vector3 blockPos = new(blockSectionStart + (blockSectionWidth / 2), -4.5f, 0);
-        Debug.Log("makeblock: blockPos = " + blockPos);
         groundBlock.transform.position = blockPos;
 
         //SpawnFlowers();

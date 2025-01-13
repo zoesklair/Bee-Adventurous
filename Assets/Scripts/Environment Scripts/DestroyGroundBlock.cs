@@ -25,7 +25,7 @@ public class DestroyGroundBlock : MonoBehaviour
     {
         if(transform.position.x < (ScreenBounds.x - bm.screenWidth) - 10)
         {
-            Debug.Log("destroy block");
+            //Debug.Log("destroy block");
             Destroy(gameObject);
         }
     }

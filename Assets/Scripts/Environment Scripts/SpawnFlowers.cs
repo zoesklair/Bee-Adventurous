@@ -16,9 +16,7 @@ public class SpawnFlowers : MonoBehaviour
     {
         
         float blockSectionWidth = transform.localScale.x;
-        Debug.Log("block width: " + blockSectionWidth);
         float blockSectionStart = transform.position.x - blockSectionWidth/2;
-        Debug.Log("blockSectionStart: " + blockSectionWidth);
 
         float flowerPosX = Random.Range(blockSectionStart, blockSectionStart + blockSectionWidth);
         Vector3 flowerPos = new Vector3(flowerPosX, -3.75f, 0);

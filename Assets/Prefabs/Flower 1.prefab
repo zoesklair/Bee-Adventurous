@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1761207734356580587}
   - component: {fileID: 5160736004761902071}
   - component: {fileID: 2814738500176775178}
+  - component: {fileID: -7315405930228211086}
   m_Layer: 0
   m_Name: Flower 1
   m_TagString: Untagged
@@ -157,6 +158,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecda9677711a1bf4593a93af143d252d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7315405930228211086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241935021835898371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144ec157f421b834cbaacf08f5b624c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceOfCarnivorousFlower: 0.3
+  flowerChompRate: 3
 --- !u!1 &430804207919057934
 GameObject:
   m_ObjectHideFlags: 0
