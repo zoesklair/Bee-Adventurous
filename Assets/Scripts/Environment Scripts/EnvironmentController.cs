@@ -12,6 +12,7 @@ public class EnvironmentController : MonoBehaviour
 
     [SerializeField]
     private GameObject groundBlockPrefab;
+    
 
     //next block section
     //when screen edge with border enters block section, create block, move section + 10
@@ -26,7 +27,8 @@ public class EnvironmentController : MonoBehaviour
     {
         bm = bee.GetComponent<BeeMovement>();
         blockSectionStart = 15;
-        blockSectionWidth = 10;
+        //blockSectionWidth = 20;
+        blockSectionWidth = groundBlockPrefab.transform.localScale.x;
     }
 
     // Start is called before the first frame update
@@ -46,12 +48,17 @@ public class EnvironmentController : MonoBehaviour
         }
     }
 
-    void MakeBlock()
+    GameObject MakeBlock()
     {
         //Debug.Log("make block");
         GameObject groundBlock = Instantiate(groundBlockPrefab);
         Vector3 blockPos = new(blockSectionStart + (blockSectionWidth / 2), -4.5f, 0);
         groundBlock.transform.position = blockPos;
 
+        //SpawnFlowers();
+
+        return groundBlock;
     }
+
+    
 }
