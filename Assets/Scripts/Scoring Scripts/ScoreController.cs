@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class ScoreController : MonoBehaviour
+{
+    //used to get screen bounds from bee movement component
+    [SerializeField]
+    private GameObject bee;
+    private BeeMovement bm;
+
+    [SerializeField]
+    private TMP_Text scoreDisplay;
+    private Vector2 ScreenBounds => bm.screenBounds;
+
+    public int Score
+    {
+        get
+        {
+            return scoreFromDistance;
+        }
+    }
+
+    private int scoreFromDistance;
+
+    private void Awake()
+    {
+        scoreFromDistance = 0;
+        bm = bee.GetComponent<BeeMovement>();
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        scoreFromDistance = (int)ScreenBounds.x - 8;
+        scoreDisplay.text = "Score: " + scoreFromDistance;
+    }
+}

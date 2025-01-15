@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CarnivorousFlower : MonoBehaviour
 {
+    /*[SerializeField]
+    Sprite flowerChomp, flowerNormal;
+    SpriteRenderer renderer;*/
     [SerializeField]
     private float chanceOfCarnivorousFlower = 0.3f;
 
@@ -13,6 +16,10 @@ public class CarnivorousFlower : MonoBehaviour
     [SerializeField]
     private float flowerChompRate = 3f;
 
+    private void Awake()
+    {
+        //renderer = gameObject.GetComponent<SpriteRenderer>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +50,7 @@ public class CarnivorousFlower : MonoBehaviour
     }
     void Chomp()
     {
-        //Debug.Log("carnivorousFlower: CHOMP");
+        Debug.Log("carnivorousFlower: CHOMP");
+     //   renderer.sprite = flowerChomp;
     }
 }
