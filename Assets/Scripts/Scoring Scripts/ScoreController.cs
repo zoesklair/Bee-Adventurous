@@ -14,6 +14,8 @@ public class ScoreController : MonoBehaviour
     private TMP_Text scoreDisplay;
     private Vector2 ScreenBounds => bm.screenBounds;
 
+    private float initialScreenXPos;
+
     public int Score
     {
         get
@@ -28,6 +30,7 @@ public class ScoreController : MonoBehaviour
     {
         scoreFromDistance = 0;
         bm = bee.GetComponent<BeeMovement>();
+        initialScreenXPos = bm.screenBounds.x;
     }
     // Start is called before the first frame update
     void Start()
@@ -38,7 +41,7 @@ public class ScoreController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreFromDistance = (int)ScreenBounds.x - 8;
+        scoreFromDistance = (int)(ScreenBounds.x - initialScreenXPos);
         scoreDisplay.text = "Score: " + scoreFromDistance;
     }
 }
