@@ -10,7 +10,8 @@ public class CarnivorousFlower : MonoBehaviour
     [SerializeField]
     private float chanceOfCarnivorousFlower = 0.3f;
 
-    private bool flowerIsCarnivorous = false;
+    public bool flowerIsCarnivorous = false;
+    public bool flowerIsChomping = false;
 
     private float flowerChompTimer = 0f;
     [SerializeField]
@@ -52,5 +53,16 @@ public class CarnivorousFlower : MonoBehaviour
     {
         Debug.Log("carnivorousFlower: CHOMP");
         spriteRenderer.sprite = flowerChomp;
+        flowerIsChomping = true;
+
+        StartCoroutine(UnChomp(1f));
+    }
+    IEnumerator UnChomp(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Debug.Log("unchomp");
+        spriteRenderer.sprite = flowerNormal;
+        flowerIsChomping = false;
+        //flowerChompTimer = 0;
     }
 }

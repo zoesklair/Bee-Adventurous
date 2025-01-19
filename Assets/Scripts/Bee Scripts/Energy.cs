@@ -12,8 +12,7 @@ public class Energy : MonoBehaviour
     GameObject energyBar;
     Slider energyBarSlider;
     [SerializeField]
-    GameObject gameOverPanel;
-    GameOverScreen gameOverScreen;
+    GameOverController gameOverController;
 
     public float EnergyLevel => energyLevel;
 
@@ -24,7 +23,7 @@ public class Energy : MonoBehaviour
     private void Awake()
     {
         energyBarSlider = energyBar.GetComponent<Slider>();
-        gameOverScreen = gameOverPanel.GetComponent<GameOverScreen>();
+        gameOverController = GameObject.Find("GameOverController").GetComponent<GameOverController>();
     }
     // Start is called before the first frame update
     void Start()
@@ -60,7 +59,7 @@ public class Energy : MonoBehaviour
     {
         if(EnergyLevel < 1)
         {
-            gameOverScreen.SetGameOver();
+            gameOverController.SetGameOver();
         }
     }
 }

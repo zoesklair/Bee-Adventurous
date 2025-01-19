@@ -19,7 +19,7 @@ public class GameOverScreen : MonoBehaviour
     {
         
     }
-    public void SetGameOver()
+    public void MakeGameOverPanelActive()
     {
         gameObject.SetActive(true);
     }

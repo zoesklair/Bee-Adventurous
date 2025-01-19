@@ -171,9 +171,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flowerChomp: {fileID: 21300000, guid: 7266ccb9b97e36c43933c5d67e95f407, type: 3}
-  flowerNormal: {fileID: 0}
+  flowerNormal: {fileID: 21300000, guid: 88b2252ab55faa849a600dcb5217a6fd, type: 3}
   chanceOfCarnivorousFlower: 0.3
-  flowerChompRate: 3
+  flowerIsCarnivorous: 0
+  flowerIsChomping: 0
+  flowerChompRate: 5
 --- !u!1 &430804207919057934
 GameObject:
   m_ObjectHideFlags: 0

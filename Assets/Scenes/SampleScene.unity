@@ -234,8 +234,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyDisplay: {fileID: 414634092}
   energyBar: {fileID: 1673442493}
-  gameOverPanel: {fileID: 1803886217}
-  energyLevelReductionRate: 2
+  gameOverController: {fileID: 0}
+  energyLevelReductionRate: 5
 --- !u!212 &8161496
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1653,6 +1653,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1808081532}
   m_CullTransparentMesh: 1
+--- !u!1 &1911202336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1911202337}
+  - component: {fileID: 1911202338}
+  m_Layer: 0
+  m_Name: GameOverController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1911202337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911202336}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 351.5, y: 219.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1911202338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911202336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b50d55c83e7b7948bd609f735048070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverPanel: {fileID: 1803886217}
 --- !u!1 &1935514604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1783,7 +1828,8 @@ SceneRoots:
   - {fileID: 8161492}
   - {fileID: 1075717893}
   - {fileID: 1935514605}
+  - {fileID: 1911202337}
+  - {fileID: 1608020753}
   - {fileID: 183094075}
   - {fileID: 582397931}
-  - {fileID: 1608020753}
   - {fileID: 908136678}
