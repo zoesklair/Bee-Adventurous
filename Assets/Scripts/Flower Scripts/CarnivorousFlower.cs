@@ -6,7 +6,8 @@ public class CarnivorousFlower : MonoBehaviour
 {
     [SerializeField]
     Sprite flowerChomp, flowerNormal;
-    SpriteRenderer spriteRenderer;
+    FlowerSpriteChanger spriteChanger;
+    Nectar nectar;
     [SerializeField]
     private float chanceOfCarnivorousFlower = 0.3f;
 
@@ -19,7 +20,8 @@ public class CarnivorousFlower : MonoBehaviour
 
     private void Awake()
     {
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteChanger = gameObject.GetComponent<FlowerSpriteChanger>();
+        nectar = gameObject.GetComponent<Nectar>();
     }
     // Start is called before the first frame update
     void Start()
@@ -52,7 +54,7 @@ public class CarnivorousFlower : MonoBehaviour
     void Chomp()
     {
         Debug.Log("carnivorousFlower: CHOMP");
-        spriteRenderer.sprite = flowerChomp;
+        spriteChanger.UpdateFlowerSprite(FlowerSpriteChanger.FlowerSprites.CarnivorChomp);
         flowerIsChomping = true;
 
         StartCoroutine(UnChomp(1f));
@@ -61,7 +63,15 @@ public class CarnivorousFlower : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         Debug.Log("unchomp");
-        spriteRenderer.sprite = flowerNormal;
+        if (nectar.FlowerHasNectar)
+        {
+            spriteChanger.UpdateFlowerSprite(FlowerSpriteChanger.FlowerSprites.NormalWithNectar);
+        }
+        else
+        {
+            spriteChanger.UpdateFlowerSprite(FlowerSpriteChanger.FlowerSprites.NormalNoNectar);
+        }
+        
         flowerIsChomping = false;
         //flowerChompTimer = 0;
     }
