@@ -27,5 +27,6 @@ public class GameOverController : MonoBehaviour
     {
         Debug.Log("game over");
         gameOverScreen.MakeGameOverPanelActive();
+        Time.timeScale = 0;
     }
 }
