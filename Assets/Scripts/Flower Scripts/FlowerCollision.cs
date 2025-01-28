@@ -27,7 +27,7 @@ public class FlowerCollision : MonoBehaviour
     {
         if (beeCollider.bounds.Intersects(flowerCollider.bounds))
         {
-            //Debug.Log("hit!");
+            //Debug.Log("hit!"); //not when already chomping
             if(carnivorFlower.flowerIsCarnivorous && carnivorFlower.flowerIsChomping)
             {
                 Debug.Log("Game Over!");
