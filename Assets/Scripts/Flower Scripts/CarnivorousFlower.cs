@@ -5,14 +5,24 @@ using UnityEngine;
 public class CarnivorousFlower : MonoBehaviour
 {
     [SerializeField]
+    Sprite flowerChomp, flowerNormal;
+    FlowerSpriteChanger spriteChanger;
+    Nectar nectar;
+    [SerializeField]
     private float chanceOfCarnivorousFlower = 0.3f;
 
-    private bool flowerIsCarnivorous = false;
+    public bool flowerIsCarnivorous = false;
+    public bool flowerIsChomping = false;
 
     private float flowerChompTimer = 0f;
     [SerializeField]
     private float flowerChompRate = 3f;
 
+    private void Awake()
+    {
+        spriteChanger = gameObject.GetComponent<FlowerSpriteChanger>();
+        nectar = gameObject.GetComponent<Nectar>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +53,26 @@ public class CarnivorousFlower : MonoBehaviour
     }
     void Chomp()
     {
-        //Debug.Log("carnivorousFlower: CHOMP");
+        Debug.Log("carnivorousFlower: CHOMP");
+        spriteChanger.UpdateFlowerSprite(FlowerSpriteChanger.FlowerSprites.CarnivorChomp);
+        flowerIsChomping = true;
+
+        StartCoroutine(UnChomp(1f));
+    }
+    IEnumerator UnChomp(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Debug.Log("unchomp");
+        if (nectar.FlowerHasNectar)
+        {
+            spriteChanger.UpdateFlowerSprite(FlowerSpriteChanger.FlowerSprites.NormalWithNectar);
+        }
+        else
+        {
+            spriteChanger.UpdateFlowerSprite(FlowerSpriteChanger.FlowerSprites.NormalNoNectar);
+        }
+        
+        flowerIsChomping = false;
+        //flowerChompTimer = 0;
     }
 }

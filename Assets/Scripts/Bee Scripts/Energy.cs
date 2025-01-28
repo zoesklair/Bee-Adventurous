@@ -11,15 +11,19 @@ public class Energy : MonoBehaviour
     [SerializeField]
     GameObject energyBar;
     Slider energyBarSlider;
+    [SerializeField]
+    GameOverController gameOverController;
 
     public float EnergyLevel => energyLevel;
 
     private float energyLevel;
+    [SerializeField]
     private float energyLevelReductionRate = 1;
 
     private void Awake()
     {
         energyBarSlider = energyBar.GetComponent<Slider>();
+        gameOverController = GameObject.Find("GameOverController").GetComponent<GameOverController>();
     }
     // Start is called before the first frame update
     void Start()
@@ -32,6 +36,7 @@ public class Energy : MonoBehaviour
     {
         ReduceEnergy();
         DisplayEnergy();
+        CheckNoEnergyAndGameOver();
     }
 
     void ReduceEnergy()
@@ -46,9 +51,15 @@ public class Energy : MonoBehaviour
         energyBarSlider.value = EnergyLevel / 100f;
 
     }
-
     public void UpdateEnergy(float energyChange)
     {
         energyLevel = Mathf.Clamp(energyLevel + energyChange, 0, 100);
+    }
+    private void CheckNoEnergyAndGameOver()
+    {
+        if(EnergyLevel < 1)
+        {
+            gameOverController.SetGameOver();
+        }
     }
 }
