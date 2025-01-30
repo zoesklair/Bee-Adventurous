@@ -17,7 +17,10 @@ public class MainMenuButtons : MonoBehaviour
     }
     public void PlayButtonPressed()
     {
-        Debug.Log("main menu buttons: play button pressed");
         gameStateController.UpdateGameState(GameStateController.GameState.Play);
+    }
+    public void BackButtonPressed()
+    {
+        gameStateController.UpdateGameState(GameStateController.GameState.MainMenu);
     }
 }
