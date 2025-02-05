@@ -12,10 +12,6 @@ public class EnvironmentController : MonoBehaviour
 
     [SerializeField]
     private GameObject groundBlockPrefab;
-    
-
-    //next block section
-    //when screen edge with border enters block section, create block, move section + 10
 
     //used to get screen bounds from bee movement component
     [SerializeField]
@@ -27,20 +23,12 @@ public class EnvironmentController : MonoBehaviour
     {
         bm = bee.GetComponent<BeeMovement>();
         blockSectionStart = 15;
-        //blockSectionWidth = 20;
         blockSectionWidth = groundBlockPrefab.transform.localScale.x;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-       // Debug.Log(ScreenBounds.x);
         if((ScreenBounds.x + screenBorder) > blockSectionStart)
         {
             MakeBlock();
@@ -50,12 +38,9 @@ public class EnvironmentController : MonoBehaviour
 
     GameObject MakeBlock()
     {
-        //Debug.Log("make block");
         GameObject groundBlock = Instantiate(groundBlockPrefab);
         Vector3 blockPos = new(blockSectionStart + (blockSectionWidth / 2), -4.5f, 0);
         groundBlock.transform.position = blockPos;
-
-        //SpawnFlowers();
 
         return groundBlock;
     }

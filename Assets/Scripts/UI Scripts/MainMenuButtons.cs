@@ -23,4 +23,9 @@ public class MainMenuButtons : MonoBehaviour
     {
         gameStateController.UpdateGameState(GameStateController.GameState.MainMenu);
     }
+
+    public void ScoreBoardButtonPressed()
+    {
+        gameStateController.UpdateGameState(GameStateController.GameState.ScoreBoard);
+    }
 }

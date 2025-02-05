@@ -11,6 +11,8 @@ public class GameStateController : MonoBehaviour
     GameObject scoreBoardPanel;
     [SerializeField]
     GameObject gameOverPanel;
+    [SerializeField]
+    GameObject backButton;
 
     private GameState currentGameState;
     public enum GameState
@@ -23,6 +25,7 @@ public class GameStateController : MonoBehaviour
     {
         currentGameState = GameState.MainMenu;
         scoreBoardPanel.SetActive(false);
+        backButton.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -33,8 +36,8 @@ public class GameStateController : MonoBehaviour
         if(newGameState == GameState.Play)
         {
             mainMenuPanel.SetActive(false);
+            backButton.SetActive(true);
             Time.timeScale = 1;
-            currentGameState = newGameState;
             //restart game position
         }
         else if(newGameState == GameState.MainMenu)
@@ -42,8 +45,16 @@ public class GameStateController : MonoBehaviour
             scoreBoardPanel.SetActive(false);
             gameOverPanel.SetActive(false);
             mainMenuPanel.SetActive(true);
+            backButton.SetActive(false);
             Time.timeScale = 0;
-            currentGameState = newGameState;
         }
+        else if(newGameState == GameState.ScoreBoard)
+        {
+            scoreBoardPanel.SetActive(true);
+            gameOverPanel.SetActive(false);
+            mainMenuPanel.SetActive(false);
+            backButton.SetActive(true);
+        }
+        currentGameState = newGameState;
     }
 }
