@@ -53,7 +53,7 @@ public class CarnivorousFlower : MonoBehaviour
     }
     void Chomp()
     {
-        Debug.Log("carnivorousFlower: CHOMP");
+       // Debug.Log("carnivorousFlower: CHOMP");
         spriteChanger.UpdateFlowerSprite(FlowerSpriteChanger.FlowerSprites.CarnivorChomp);
         flowerIsChomping = true;
 
@@ -62,7 +62,7 @@ public class CarnivorousFlower : MonoBehaviour
     IEnumerator UnChomp(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        Debug.Log("unchomp");
+        //Debug.Log("unchomp");
         if (nectar.FlowerHasNectar)
         {
             spriteChanger.UpdateFlowerSprite(FlowerSpriteChanger.FlowerSprites.NormalWithNectar);
