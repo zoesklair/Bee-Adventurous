@@ -29,7 +29,7 @@ public class Nectar : MonoBehaviour
 
     public void CollectNectar()
     {
-        //energy go up
+        //energy goes up
         beeEnergy.UpdateEnergy(energyFromNectar);
         flowerHasNectar = false;
         spriteChanger.UpdateFlowerSprite(FlowerSpriteChanger.FlowerSprites.NormalNoNectar);

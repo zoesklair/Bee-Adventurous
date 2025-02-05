@@ -20,7 +20,6 @@ public class BeeMovement : MonoBehaviour
     public Vector2 screenBounds;
 
     private SpriteRenderer beeSprite;
-    private bool beeFacingRight;
 
     private void Awake()
     {
@@ -28,12 +27,6 @@ public class BeeMovement : MonoBehaviour
         screenWidth = screenBounds.x * 2;
 
         beeSprite = GetComponent<SpriteRenderer>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        beeFacingRight = true;
     }
 
     // Update is called once per frame
@@ -66,7 +59,6 @@ public class BeeMovement : MonoBehaviour
         float scrollBoundaryPos = screenBounds.x - (0.25f * screenWidth);
         if (userMovement.x > 0 && transform.position.x >= scrollBoundaryPos)
         {
-            //Debug.Log("move camera");
             Vector3 cameraMove = new Vector3(userMovement.x, 0, 0) * beeSpeed * Time.deltaTime; 
             mainCamera.transform.position += cameraMove;
             //update screenbounds
@@ -83,7 +75,6 @@ public class BeeMovement : MonoBehaviour
         else if (horizontalMovement < 0)
         {
             beeSprite.flipX = true;
-            //Debug.Log("face left");
         }
     }
 }
