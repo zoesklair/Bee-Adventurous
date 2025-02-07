@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5211832033273734167}
   - component: {fileID: 87048793864444040}
   - component: {fileID: 8466732827728025641}
+  - component: {fileID: 520676313530457027}
+  - component: {fileID: 5631725637458520737}
   m_Layer: 0
   m_Name: Predator
   m_TagString: Untagged
@@ -97,4 +99,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e69960b54248049a8beceaf5cf5d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  predatorSpeed: 5
+  predatorSpeed: 2
+  distanceToLockOn: 1
+--- !u!114 &520676313530457027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985757442485092452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1adba3f78acf64984f18ee1cd9f537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &5631725637458520737
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985757442485092452}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0067229867, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.313102

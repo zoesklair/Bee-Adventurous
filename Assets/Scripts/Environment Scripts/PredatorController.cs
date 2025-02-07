@@ -8,10 +8,11 @@ public class PredatorController : MonoBehaviour
     private float chanceOfPredatorPerBlock = 0.5f;
     [SerializeField]
     GameObject predatorPrefab;
-
     GameObject predatorInstance;
 
     private GameObject groundBlock;
+
+
 
 
     private void Awake()
