@@ -14,6 +14,9 @@ public class GameStateController : MonoBehaviour
     [SerializeField]
     GameObject backButton;
 
+    GameStartup gameStartup;
+
+
     private GameState currentGameState;
     public enum GameState
     {
@@ -23,6 +26,7 @@ public class GameStateController : MonoBehaviour
     }
     void Awake()
     {
+        gameStartup = gameObject.GetComponent<GameStartup>();
         currentGameState = GameState.MainMenu;
         scoreBoardPanel.SetActive(false);
         backButton.SetActive(false);
@@ -37,8 +41,13 @@ public class GameStateController : MonoBehaviour
         {
             mainMenuPanel.SetActive(false);
             backButton.SetActive(true);
-            Time.timeScale = 1;
-            //restart game position
+            scoreBoardPanel.SetActive(false);
+            gameOverPanel.SetActive(false);
+
+            gameStartup.SetUpGame();
+            StartCoroutine(PlayGame());
+
+            
         }
         else if(newGameState == GameState.MainMenu)
         {
@@ -56,5 +65,10 @@ public class GameStateController : MonoBehaviour
             backButton.SetActive(true);
         }
         currentGameState = newGameState;
+    }
+    IEnumerator PlayGame()
+    {
+        yield return 0;
+        Time.timeScale = 1;
     }
 }

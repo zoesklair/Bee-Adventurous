@@ -59,6 +59,7 @@ public class Energy : MonoBehaviour
     {
         if(EnergyLevel < 1)
         {
+            Debug.Log("Energy: energy ran out - game over.");
             gameOverController.SetGameOver();
         }
     }
