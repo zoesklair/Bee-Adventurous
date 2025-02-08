@@ -21,4 +21,8 @@ public class MainMenuButtons : MonoBehaviour
     {
         gameStateController.UpdateGameState(GameStateController.GameState.ScoreBoard);
     }
+    public void RestartButtonPressed()
+    {
+        gameStateController.RestartGame();
+    }
 }

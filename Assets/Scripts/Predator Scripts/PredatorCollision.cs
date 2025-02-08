@@ -31,7 +31,7 @@ public class PredatorCollision : MonoBehaviour
         if (beeCollider.bounds.Intersects(predatorCollider.bounds) && Time.timeScale == 1)
         {
             Debug.Log("PredatorCollision: Eaten!");
-           
+            gameOverController.SetGameOver();
         }
     }
 }

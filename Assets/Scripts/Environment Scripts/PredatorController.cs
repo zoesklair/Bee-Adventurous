@@ -30,7 +30,7 @@ public class PredatorController : MonoBehaviour
 
     void SpawnPredator()
     {
-        Vector3 predPos = new Vector3(groundBlock.transform.position.x, 0, 0);
+        Vector3 predPos = new Vector3(groundBlock.transform.position.x, 5, 0);
         Quaternion predRot = Quaternion.identity;
         Debug.Log("predatorcontroller: spawn predator");
         predatorInstance = Instantiate(predatorPrefab, predPos, predRot);

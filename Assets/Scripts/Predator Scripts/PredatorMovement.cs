@@ -6,54 +6,68 @@ public class PredatorMovement : MonoBehaviour
 {
     [SerializeField]
     private float predatorSpeed = 5f;
-    [SerializeField]
-    private float distanceToLockOn = 1f;
     GameObject bee;
+
+    SpriteRenderer sprite;
+
+
     Vector3 predatorMovement;
     bool givenUp;
+    [SerializeField]
+    float secondstoChaseBee = 6f;
+    float chaseTimer;
 
     private void Awake()
     {
+        sprite = gameObject.GetComponent<SpriteRenderer>();
         bee = GameObject.Find("Bee");
         predatorMovement = Vector3.zero;
         givenUp = false;
+        chaseTimer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         MovePredator();
+        CheckIfOffScreen();
     }
 
     void MovePredator()
     {
-        //get bee transform
-        //make vector from predator to bee pos
-        // move in that direction
-
-
-        float dist = Vector3.Distance(bee.transform.position, transform.position);
-        if(dist > distanceToLockOn && !givenUp)
+        //make predator follow bee
+        if(!givenUp)
         {
             Vector3 beePos = bee.transform.position;
             predatorMovement = beePos - transform.position;
             predatorMovement.Normalize();
+            
+            chaseTimer += Time.deltaTime;
+            if(chaseTimer >= secondstoChaseBee)
+            {
+                givenUp = true;
+                //move off screen upwards
+                predatorMovement.y = 1;
+                
+            }
         }
-        givenUp = true;
-        transform.position += predatorMovement * predatorSpeed * Time.deltaTime;
 
-
-        /*if(predatorMovement == Vector3.zero)
+        if(predatorMovement.x > 0)
         {
-            Vector3 beePos = bee.transform.position;
-            predatorMovement = beePos - transform.position;
-            predatorMovement.Normalize();
-        }*/
-        //Vector3 beePos = bee.transform.position;
-        //Vector3 predDirection = (beePos - transform.position);
-        //predDirection.Normalize();
-
+            sprite.flipX = true;
+        }
+        else if(predatorMovement.x < 0)
+        {
+            sprite.flipX = false;
+        }
         transform.position += predatorMovement * predatorSpeed * Time.deltaTime;
+    }
 
+    void CheckIfOffScreen()
+    {
+        if(givenUp && transform.position.y > 6)
+        {
+            Destroy(gameObject);
+        }
     }
 }

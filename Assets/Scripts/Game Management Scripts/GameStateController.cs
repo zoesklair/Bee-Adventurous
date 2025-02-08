@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStateController : MonoBehaviour
 {
@@ -14,9 +15,6 @@ public class GameStateController : MonoBehaviour
     [SerializeField]
     GameObject backButton;
 
-    GameStartup gameStartup;
-
-
     private GameState currentGameState;
     public enum GameState
     {
@@ -26,7 +24,6 @@ public class GameStateController : MonoBehaviour
     }
     void Awake()
     {
-        gameStartup = gameObject.GetComponent<GameStartup>();
         currentGameState = GameState.MainMenu;
         scoreBoardPanel.SetActive(false);
         backButton.SetActive(false);
@@ -44,10 +41,7 @@ public class GameStateController : MonoBehaviour
             scoreBoardPanel.SetActive(false);
             gameOverPanel.SetActive(false);
 
-            gameStartup.SetUpGame();
-            StartCoroutine(PlayGame());
-
-            
+            Time.timeScale = 1;
         }
         else if(newGameState == GameState.MainMenu)
         {
@@ -66,9 +60,10 @@ public class GameStateController : MonoBehaviour
         }
         currentGameState = newGameState;
     }
-    IEnumerator PlayGame()
+
+    public void RestartGame()
     {
-        yield return 0;
-        Time.timeScale = 1;
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 }
