@@ -24,7 +24,7 @@ public class FlowerCollision : MonoBehaviour
 
     void Update()
     {
-        if (beeCollider.bounds.Intersects(flowerCollider.bounds) && Time.timeScale == 1)
+        if (beeCollider.bounds.Intersects(flowerCollider.bounds) && Time.timeScale == 1f)
         {
            
             //Debug.Log("hit!"); //not when already chomping

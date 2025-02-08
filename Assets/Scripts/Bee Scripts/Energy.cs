@@ -34,9 +34,12 @@ public class Energy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ReduceEnergy();
-        DisplayEnergy();
-        CheckNoEnergyAndGameOver();
+        if(Time.timeScale == 1f)
+        {
+            ReduceEnergy();
+            DisplayEnergy();
+            CheckNoEnergyAndGameOver();
+        }
     }
 
     void ReduceEnergy()

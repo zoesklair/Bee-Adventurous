@@ -28,7 +28,7 @@ public class PredatorCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (beeCollider.bounds.Intersects(predatorCollider.bounds) && Time.timeScale == 1)
+        if (beeCollider.bounds.Intersects(predatorCollider.bounds) && Time.timeScale == 1f)
         {
             Debug.Log("PredatorCollision: Eaten!");
             gameOverController.SetGameOver();

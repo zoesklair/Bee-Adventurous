@@ -10,6 +10,7 @@ public class PredatorMovement : MonoBehaviour
 
     SpriteRenderer sprite;
 
+    float xScaling;
 
     Vector3 predatorMovement;
     bool givenUp;
@@ -24,6 +25,7 @@ public class PredatorMovement : MonoBehaviour
         predatorMovement = Vector3.zero;
         givenUp = false;
         chaseTimer = 0;
+        xScaling = transform.localScale.x;
     }
 
     // Update is called once per frame
@@ -54,11 +56,11 @@ public class PredatorMovement : MonoBehaviour
 
         if(predatorMovement.x > 0)
         {
-            sprite.flipX = true;
+            gameObject.transform.localScale = new Vector3(-xScaling, transform.localScale.y, transform.localScale.z);
         }
         else if(predatorMovement.x < 0)
         {
-            sprite.flipX = false;
+            gameObject.transform.localScale = new Vector3(xScaling, transform.localScale.y, transform.localScale.z);
         }
         transform.position += predatorMovement * predatorSpeed * Time.deltaTime;
     }
