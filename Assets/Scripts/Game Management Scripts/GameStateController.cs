@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStateController : MonoBehaviour
 {
@@ -37,8 +38,10 @@ public class GameStateController : MonoBehaviour
         {
             mainMenuPanel.SetActive(false);
             backButton.SetActive(true);
+            scoreBoardPanel.SetActive(false);
+            gameOverPanel.SetActive(false);
+
             Time.timeScale = 1;
-            //restart game position
         }
         else if(newGameState == GameState.MainMenu)
         {
@@ -56,5 +59,11 @@ public class GameStateController : MonoBehaviour
             backButton.SetActive(true);
         }
         currentGameState = newGameState;
+    }
+
+    public void RestartGame()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 }

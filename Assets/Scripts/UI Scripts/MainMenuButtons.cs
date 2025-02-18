@@ -9,23 +9,27 @@ public class MainMenuButtons : MonoBehaviour
     {
         gameStateController = GameObject.Find("GameStateController").GetComponent<GameStateController>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void PlayButtonPressed()
     {
         gameStateController.UpdateGameState(GameStateController.GameState.Play);
     }
     public void BackButtonPressed()
     {
-        gameStateController.UpdateGameState(GameStateController.GameState.MainMenu);
+        if(gameStateController.CurrentGameState == GameStateController.GameState.Play)
+        {
+            gameStateController.RestartGame();
+        }
+        else
+        {
+            gameStateController.UpdateGameState(GameStateController.GameState.MainMenu);
+        }
     }
-
     public void ScoreBoardButtonPressed()
     {
         gameStateController.UpdateGameState(GameStateController.GameState.ScoreBoard);
+    }
+    public void RestartButtonPressed()
+    {
+        gameStateController.RestartGame();
     }
 }

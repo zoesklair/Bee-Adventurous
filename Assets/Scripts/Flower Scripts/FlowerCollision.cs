@@ -22,15 +22,15 @@ public class FlowerCollision : MonoBehaviour
         carnivorFlower = GetComponent<CarnivorousFlower>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (beeCollider.bounds.Intersects(flowerCollider.bounds))
+        if (beeCollider.bounds.Intersects(flowerCollider.bounds) && Time.timeScale == 1f)
         {
+           
             //Debug.Log("hit!"); //not when already chomping
-            if(carnivorFlower.flowerIsCarnivorous && carnivorFlower.flowerIsChomping)
+            if (carnivorFlower.flowerIsCarnivorous && carnivorFlower.flowerIsChomping)
             {
-                Debug.Log("Game Over!");
+                Debug.Log("FlowerCollision: eaten by flower - game over");
                 gameOverController.SetGameOver();
             }
             if(Input.GetKeyDown(KeyCode.Space) && flowerNectar.FlowerHasNectar)
