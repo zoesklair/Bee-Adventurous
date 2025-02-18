@@ -19,12 +19,6 @@ public class PredatorCollision : MonoBehaviour
         predatorCollider = GetComponent<Collider2D>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {

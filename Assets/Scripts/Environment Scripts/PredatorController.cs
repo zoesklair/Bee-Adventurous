@@ -12,9 +12,6 @@ public class PredatorController : MonoBehaviour
 
     private GameObject groundBlock;
 
-
-
-
     private void Awake()
     {
         groundBlock = transform.gameObject;
@@ -34,11 +31,5 @@ public class PredatorController : MonoBehaviour
         Quaternion predRot = Quaternion.identity;
         Debug.Log("predatorcontroller: spawn predator");
         predatorInstance = Instantiate(predatorPrefab, predPos, predRot);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

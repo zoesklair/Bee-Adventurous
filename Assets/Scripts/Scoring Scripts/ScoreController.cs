@@ -32,11 +32,6 @@ public class ScoreController : MonoBehaviour
         bm = bee.GetComponent<BeeMovement>();
         initialScreenXPos = bm.screenBounds.x;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

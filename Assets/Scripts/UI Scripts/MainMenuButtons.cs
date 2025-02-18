@@ -15,7 +15,14 @@ public class MainMenuButtons : MonoBehaviour
     }
     public void BackButtonPressed()
     {
-        gameStateController.UpdateGameState(GameStateController.GameState.MainMenu);
+        if(gameStateController.CurrentGameState == GameStateController.GameState.Play)
+        {
+            gameStateController.RestartGame();
+        }
+        else
+        {
+            gameStateController.UpdateGameState(GameStateController.GameState.MainMenu);
+        }
     }
     public void ScoreBoardButtonPressed()
     {
