@@ -50,3 +50,6 @@ TagManager:
   - name: Character
     uniqueID: 3484419341
     locked: 0
+  - name: Predator
+    uniqueID: 2767880337
+    locked: 0

@@ -34,9 +34,12 @@ public class Energy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ReduceEnergy();
-        DisplayEnergy();
-        CheckNoEnergyAndGameOver();
+        if(Time.timeScale == 1f)
+        {
+            ReduceEnergy();
+            DisplayEnergy();
+            CheckNoEnergyAndGameOver();
+        }
     }
 
     void ReduceEnergy()
@@ -59,6 +62,7 @@ public class Energy : MonoBehaviour
     {
         if(EnergyLevel < 1)
         {
+            Debug.Log("Energy: energy ran out - game over.");
             gameOverController.SetGameOver();
         }
     }

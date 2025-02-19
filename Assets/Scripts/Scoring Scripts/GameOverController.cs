@@ -7,26 +7,23 @@ public class GameOverController : MonoBehaviour
     [SerializeField]
     GameObject gameOverPanel;
     GameOverScreen gameOverScreen;
+    AudioSource audioSource;
 
     private void Awake()
     {
         gameOverScreen = gameOverPanel.GetComponent<GameOverScreen>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
     public void SetGameOver()
     {
         Debug.Log("game over");
+        PlayGameOverSound();
         gameOverScreen.MakeGameOverPanelActive();
         Time.timeScale = 0;
+    }
+
+    void PlayGameOverSound()
+    {
+        audioSource.Play();
     }
 }
