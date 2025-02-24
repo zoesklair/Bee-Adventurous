@@ -54,6 +54,7 @@ public class GameStateController : MonoBehaviour
         else if(newGameState == GameState.ScoreBoard)
         {
             scoreBoardPanel.SetActive(true);
+            scoreBoardPanel.GetComponent<ScoreBoard>().GetScores();
             gameOverPanel.SetActive(false);
             mainMenuPanel.SetActive(false);
             backButton.SetActive(true);
