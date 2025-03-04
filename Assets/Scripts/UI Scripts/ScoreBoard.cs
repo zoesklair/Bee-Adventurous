@@ -7,7 +7,7 @@ public class ScoreBoard : MonoBehaviour
 {
     ScoreFileManager scoreFileManager;
     [SerializeField]
-    TMP_Text scoreTextBox;
+    GameObject scoresContainer;
 
     private void Awake()
     {
@@ -15,13 +15,29 @@ public class ScoreBoard : MonoBehaviour
     }
     public void GetScores()
     {
-        Debug.Log("get scores");
-        List<string> scores = scoreFileManager.ReadScores();
+        List<string> scores = scoreFileManager.ReadScoresIntoOrderAndTrim();
+        List<GameObject> scoreBoxEntries = new List<GameObject>();
+        foreach(Transform child in scoresContainer.transform)
+        {
+            scoreBoxEntries.Add(child.gameObject);
+        }
+
         if(scores.Count > 0)
         {
-            foreach(string score in scores)
+            for(int i = 0; i < scores.Count; i++)
             {
-                scoreTextBox.text += score + "\n";
+                TMP_Text playerText = scoreBoxEntries[i].transform.GetChild(0).GetComponent<TMP_Text>();
+                string[] namescore = SplitNameAndScore(scores[i]);
+                if(playerText != null)
+                {
+                    playerText.text = namescore[0];
+                }
+                TMP_Text scoreText = scoreBoxEntries[i].transform.GetChild(1).GetComponent<TMP_Text>();
+                if (scoreText != null)
+                {
+                    scoreText.text = namescore[1];
+                }
+
             }
         }
         else
@@ -29,5 +45,10 @@ public class ScoreBoard : MonoBehaviour
             Debug.Log("scoreboard: scores.count not > 0");
         }
         
+    }
+    string[] SplitNameAndScore(string nameScore)
+    {
+        string[] nameScoreSeparated = nameScore.Split(",");
+        return nameScoreSeparated;
     }
 }
