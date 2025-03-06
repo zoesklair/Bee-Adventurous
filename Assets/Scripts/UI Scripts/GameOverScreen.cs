@@ -11,11 +11,13 @@ public class GameOverScreen : MonoBehaviour
     TMP_InputField playerNameInputField;
     ScoreController scoreController;
     ScoreFileManager scoreFileManager;
+    GameStateController gameStateController;
     private void Awake()
     {
         gameObject.SetActive(false);
         scoreController = GameObject.Find("ScoreController").GetComponent<ScoreController>();
         scoreFileManager = GameObject.Find("ScoreController").GetComponent<ScoreFileManager>();
+        gameStateController = GameObject.Find("GameStateController").GetComponent<GameStateController>();
     }
     public void MakeGameOverPanelActive()
     {
@@ -37,5 +39,6 @@ public class GameOverScreen : MonoBehaviour
         string scoreEntry = playerName + ", " + scoreController.Score;
         Debug.Log("GameOverScreen.SavePlayerNameAndScore: save " + scoreEntry);
         scoreFileManager.WriteScoreToFile(scoreEntry);
+        gameStateController.UpdateGameState(GameStateController.GameState.ScoreBoard);
     }
 }
