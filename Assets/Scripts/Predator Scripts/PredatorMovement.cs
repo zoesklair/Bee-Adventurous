@@ -13,6 +13,7 @@ public class PredatorMovement : MonoBehaviour
     float xScaling;
 
     Vector3 predatorMovement;
+    Vector3 PredatorHeadPos => transform.position + new Vector3(-0.86f, 0.52f, 0f);
     bool givenUp;
     [SerializeField]
     float secondstoChaseBee = 6f;
@@ -41,7 +42,7 @@ public class PredatorMovement : MonoBehaviour
         if(!givenUp)
         {
             Vector3 beePos = bee.transform.position;
-            predatorMovement = beePos - transform.position;
+            predatorMovement = beePos - PredatorHeadPos;
             predatorMovement.Normalize();
             
             chaseTimer += Time.deltaTime;

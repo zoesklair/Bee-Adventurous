@@ -27,7 +27,17 @@ public class PredatorController : MonoBehaviour
 
     void SpawnPredator()
     {
-        Vector3 predPos = new Vector3(groundBlock.transform.position.x, 5, 0);
+        //get random vertical pos between 5 and -3
+        float verticalPos = (Random.value * 12) - 3;
+        float horizPos = groundBlock.transform.position.x;
+        //if vertical position is high, chance of parrot spawning from above instead of the side
+        if(verticalPos > 5.5f)
+        {
+            float max = groundBlock.transform.position.x - groundBlock.transform.localScale.x/2;
+            float min = groundBlock.transform.position.x - groundBlock.transform.localScale.x;
+            horizPos = Random.value * (max-min) + min;
+        }
+        Vector3 predPos = new Vector3(horizPos, verticalPos, 0);
         Quaternion predRot = Quaternion.identity;
         Debug.Log("predatorcontroller: spawn predator");
         predatorInstance = Instantiate(predatorPrefab, predPos, predRot);

@@ -32,8 +32,6 @@ public class ScoreController : MonoBehaviour
         bm = bee.GetComponent<BeeMovement>();
         initialScreenXPos = bm.screenBounds.x;
     }
-
-    // Update is called once per frame
     void Update()
     {
         scoreFromDistance = (int)(ScreenBounds.x - initialScreenXPos);

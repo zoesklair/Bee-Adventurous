@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnvironmentController : MonoBehaviour
 {
     [SerializeField] //for testing make available to change
-    private float screenBorder =  -2; //space between screen edge and edge that comes into contact with next block section
+    private float screenBorder =  -2f; //space between screen edge and edge that comes into contact with next block section
 
     private float blockSectionStart;
     private float blockSectionWidth;
