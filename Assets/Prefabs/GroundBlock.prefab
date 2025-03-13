@@ -124,5 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dcc1b4e7da466446bfafc9e14203c5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chanceOfPredatorPerBlock: 0.25
+  chanceOfPredatorPerBlock: 0.3
   predatorPrefab: {fileID: 1985757442485092452, guid: 344b0082cc1bcee4e80452d24dafd71a, type: 3}
