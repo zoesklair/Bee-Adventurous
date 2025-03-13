@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7780516981138680248}
   - component: {fileID: 8254072115942606064}
   m_Layer: 0
-  m_Name: GroundBlock
+  m_Name: GroundBlockPlain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

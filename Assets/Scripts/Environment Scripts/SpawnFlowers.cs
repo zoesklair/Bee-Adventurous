@@ -7,12 +7,42 @@ public class SpawnFlowers : MonoBehaviour
     [SerializeField]
     private GameObject flowerPrefab;
 
-    private List<GameObject> containedObject;
+    private List<GameObject> containedObjects;
+    private ScoreController scoreController;
+
+    private float ChanceOfFlowerSpawning
+    {
+        get
+        {
+            int score = scoreController.Score;
+            if (score < 100)
+            {
+                return 1.0f;
+            }
+            else if (score < 300)
+            {
+                return 0.85f;
+            }
+            else if (score < 500)
+            {
+                return 0.75f;
+            }
+            else if (score < 1000)
+            {
+                return 0.7f;
+            }
+            else return 0.6f;
+        }
+    }
+
+    //[SerializeField]
+    //private float chanceOfFlowerSpawning = 0.8f;
     private void Awake()
     {
-        containedObject = new List<GameObject>();
+        containedObjects = new List<GameObject>();
+        scoreController = GameObject.Find("ScoreController").GetComponent<ScoreController>();
     }
-    void SpawnFlowersOnBlock()
+    /*GameObject SpawnFlowersOnBlock()
     {
         
         float blockSectionWidth = transform.localScale.x;
@@ -22,17 +52,51 @@ public class SpawnFlowers : MonoBehaviour
         Vector3 flowerPos = new Vector3(flowerPosX, -3.75f, 0);
         Quaternion flowerRot = Quaternion.identity;
         GameObject spawnedFlower = Instantiate(flowerPrefab, flowerPos, flowerRot);
-        containedObject.Add(spawnedFlower);
+        return spawnedFlower; 
+    }*/
+    void SpawnFlowersOnSpawnPoints()
+    {
+        List<GameObject> spawnPoints = GetSpawnPoints();
+        if(spawnPoints.Count > 0)
+        {
+            //check if flower should spawn
+            float randomFloat = Random.value;
+            if(randomFloat < ChanceOfFlowerSpawning)
+            {
+                Debug.Log("flower is spawning: " + randomFloat + " out of " + ChanceOfFlowerSpawning);
+                //choose spawn point
+                int index = Random.Range(0, spawnPoints.Count);
+                Transform spTransform = spawnPoints[index].transform;
+                Vector3 flowerPos = new Vector3(spTransform.position.x, spTransform.position.y, 0);
+                Quaternion flowerRot = Quaternion.identity;
+                GameObject spawnedFlower = Instantiate(flowerPrefab, flowerPos, flowerRot);
+                containedObjects.Add(spawnedFlower);
+            }
+        }
+
     }
-    // Start is called before the first frame update
+    private List<GameObject> GetSpawnPoints()
+    {
+        List<GameObject> spawnPoints = new List<GameObject>();
+        foreach (Transform child in gameObject.transform)
+        {
+            if (child.name == "SpawnPoint")
+            {
+                spawnPoints.Add(child.gameObject);
+            }
+        }
+        return spawnPoints;
+    }
     void Start()
     {
-        SpawnFlowersOnBlock();
+        SpawnFlowersOnSpawnPoints();
+        //GameObject spawnedFlower = SpawnFlowersOnBlock();
+        //containedObject.Add(spawnedFlower);
     }
 
     private void OnDestroy()
     {
-        foreach(GameObject go in containedObject)
+        foreach(GameObject go in containedObjects)
         {
             Destroy(go);
         }    
