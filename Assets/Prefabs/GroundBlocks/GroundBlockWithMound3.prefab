@@ -231,8 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c862c8f7b015834cafc101d19cee346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowerPrefab: {fileID: 241935021835898371, guid: d373d39abeb16bb41b30df643e4a5faa, type: 3}
-  chanceOfFlowerSpawning: 0.8
+  flowerPrefab: {fileID: 9122068852943795650, guid: c8d190b8766cc5e4295f9fb230f003cc, type: 3}
 --- !u!114 &8100703196950299293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dcc1b4e7da466446bfafc9e14203c5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chanceOfPredatorPerBlock: 0.3
   predatorPrefab: {fileID: 1985757442485092452, guid: 344b0082cc1bcee4e80452d24dafd71a, type: 3}
 --- !u!1 &7387739692813422993
 GameObject:

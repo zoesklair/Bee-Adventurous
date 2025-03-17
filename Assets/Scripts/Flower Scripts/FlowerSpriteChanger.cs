@@ -12,7 +12,9 @@ public class FlowerSpriteChanger : MonoBehaviour
     {
         NormalNoNectar = 0,
         NormalWithNectar = 1,
-        CarnivorChomp = 2
+        CarnivorChomp = 2,
+        DangerNoNectar = 3,
+        DangerWithNectar = 4
     }
     private void Awake()
     {
@@ -33,5 +35,9 @@ public class FlowerSpriteChanger : MonoBehaviour
                 break;
         }*/
         spriteRenderer.sprite = flowerSpriteArray[(int)flowerState];
+    }
+    public void ChangeColour(Color newColour)
+    {
+        spriteRenderer.color = newColour;
     }
 }

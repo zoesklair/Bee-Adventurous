@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CarnivorousFlower : MonoBehaviour
 {
-    [SerializeField]
-    Sprite flowerChomp, flowerNormal;
     FlowerSpriteChanger spriteChanger;
     Nectar nectar;
     [SerializeField]

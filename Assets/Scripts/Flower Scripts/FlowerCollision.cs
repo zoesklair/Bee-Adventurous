@@ -11,7 +11,7 @@ public class FlowerCollision : MonoBehaviour
     Collider2D beeCollider;
     Collider2D flowerCollider;
     Nectar flowerNectar;
-    CarnivorousFlower carnivorFlower;
+    CarnivorousFlower1 carnivorFlower;
     private void Awake()
     {
         bee = GameObject.Find("Bee");
@@ -19,7 +19,7 @@ public class FlowerCollision : MonoBehaviour
         gameOverController = GameObject.Find("GameOverController").GetComponent<GameOverController>();
         flowerCollider = GetComponent<Collider2D>();
         flowerNectar = GetComponent<Nectar>();
-        carnivorFlower = GetComponent<CarnivorousFlower>();
+        carnivorFlower = GetComponent<CarnivorousFlower1>();
     }
 
     void Update()
