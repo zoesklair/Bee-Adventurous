@@ -13,6 +13,7 @@ public class CarnivorousFlower1 : MonoBehaviour
     Nectar nectar;
     private bool isWarning;
     private float timeInRange;
+    private float timeWarning;
 
     private ScoreController scoreController;
 
@@ -52,6 +53,7 @@ public class CarnivorousFlower1 : MonoBehaviour
     {
         isWarning = false;
         timeInRange = 0;
+        timeWarning = 0;
         spriteChanger = gameObject.GetComponent<FlowerSpriteChanger>();
         scoreController = GameObject.Find("ScoreController").GetComponent<ScoreController>();
         audioSource = gameObject.GetComponent<AudioSource>();
@@ -73,28 +75,38 @@ public class CarnivorousFlower1 : MonoBehaviour
     {
         if (flowerIsCarnivorous)
         {
+            //once flower gives warning, it will chomp regardless of bee colliding
+            if (isWarning)
+            {
+                timeWarning += Time.deltaTime;
+            }
+            if (timeWarning > TimeUntilChomp)
+            {
+                isWarning = false;
+                timeWarning = 0;
+                RemoveWarning();
+                Chomp();
+            }
             if (!flowerIsChomping && beeCollider.bounds.Intersects(flowerCollider.bounds) && Time.timeScale == 1f)
             {
                 timeInRange += Time.deltaTime;
+                
                 if (!isWarning && timeInRange > timeUntilWarn)
                 {
                     isWarning = true;
                     AddWarning();
                     Debug.Log("carnivourous flower: Warning");
                 }
-                if (isWarning && timeInRange > (timeUntilWarn + TimeUntilChomp))
+                /*if (isWarning && timeInRange > (timeUntilWarn + TimeUntilChomp))
                 {
                     isWarning = false;
+                    timeWarning = 0;
                     RemoveWarning();
                     Chomp();
-
-                }
-
+                }*/
             }
             else
             {
-                isWarning = false;
-                RemoveWarning();
                 timeInRange = 0;
             }
         }
