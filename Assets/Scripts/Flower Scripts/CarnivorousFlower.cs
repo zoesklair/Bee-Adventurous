@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CarnivorousFlower : MonoBehaviour
 {
-    [SerializeField]
-    Sprite flowerChomp, flowerNormal;
+    //unused - original carnivorous flower implementation
+    //replaced with CarnivorousFlower1
+
     FlowerSpriteChanger spriteChanger;
     Nectar nectar;
     [SerializeField]
@@ -23,7 +24,6 @@ public class CarnivorousFlower : MonoBehaviour
         spriteChanger = gameObject.GetComponent<FlowerSpriteChanger>();
         nectar = gameObject.GetComponent<Nectar>();
     }
-    // Start is called before the first frame update
     void Start()
     {
         if(Random.value < chanceOfCarnivorousFlower)
@@ -33,7 +33,6 @@ public class CarnivorousFlower : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (flowerIsCarnivorous)

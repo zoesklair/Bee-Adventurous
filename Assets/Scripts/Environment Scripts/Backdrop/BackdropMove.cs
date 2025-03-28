@@ -7,7 +7,7 @@ public class BackdropMove : MonoBehaviour
     BeeMovement bm;
     private Vector3 ScreenBounds => bm.screenBounds;
     private float savedScreenEdgePos;
-    private float rateOfMove = 0.5f;
+    private float rateOfMove = 0.5f; //fraction of bee's speed
     private void Awake()
     {
         bm = GameObject.Find("Bee").GetComponent<BeeMovement>();

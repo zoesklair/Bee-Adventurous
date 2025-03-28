@@ -11,7 +11,7 @@ public class FlowerCollision : MonoBehaviour
     Collider2D beeCollider;
     Collider2D flowerCollider;
     Nectar flowerNectar;
-    CarnivorousFlower carnivorFlower;
+    CarnivorousFlower1 carnivorFlower;
     private void Awake()
     {
         bee = GameObject.Find("Bee");
@@ -19,21 +19,19 @@ public class FlowerCollision : MonoBehaviour
         gameOverController = GameObject.Find("GameOverController").GetComponent<GameOverController>();
         flowerCollider = GetComponent<Collider2D>();
         flowerNectar = GetComponent<Nectar>();
-        carnivorFlower = GetComponent<CarnivorousFlower>();
+        carnivorFlower = GetComponent<CarnivorousFlower1>();
     }
 
     void Update()
     {
-        if (beeCollider.bounds.Intersects(flowerCollider.bounds) && Time.timeScale == 1f)
+        if (beeCollider.bounds.Intersects(flowerCollider.bounds) && Time.timeScale == 1f) //check intersection when game is running
         {
-           
-            //Debug.Log("hit!"); //not when already chomping
-            if (carnivorFlower.flowerIsCarnivorous && carnivorFlower.flowerIsChomping)
+            if (carnivorFlower.flowerIsCarnivorous && carnivorFlower.flowerIsChomping) //chomped by carnivorous flower
             {
                 Debug.Log("FlowerCollision: eaten by flower - game over");
                 gameOverController.SetGameOver();
             }
-            if(Input.GetKeyDown(KeyCode.Space) && flowerNectar.FlowerHasNectar)
+            if(Input.GetKeyDown(KeyCode.Space) && flowerNectar.FlowerHasNectar) //collect nectar
             {
                 flowerNectar.CollectNectar();
             }

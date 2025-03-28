@@ -8,9 +8,7 @@ public class PredatorMovement : MonoBehaviour
     private float predatorSpeed = 5f;
     GameObject bee;
 
-    SpriteRenderer sprite;
-
-    float xScaling;
+    float xScaling; //for flipping sprite & collider based on direction of movement
 
     Vector3 predatorMovement;
     Vector3 PredatorHeadPos => transform.position + new Vector3(-0.86f, 0.52f, 0f);
@@ -21,7 +19,6 @@ public class PredatorMovement : MonoBehaviour
 
     private void Awake()
     {
-        sprite = gameObject.GetComponent<SpriteRenderer>();
         bee = GameObject.Find("Bee");
         predatorMovement = Vector3.zero;
         givenUp = false;
@@ -29,7 +26,6 @@ public class PredatorMovement : MonoBehaviour
         xScaling = transform.localScale.x;
     }
 
-    // Update is called once per frame
     void Update()
     {
         MovePredator();

@@ -7,6 +7,7 @@ public class BeeMovement : MonoBehaviour
     [SerializeField]
     private float beeSpeed = 5f;
 
+    //controls sine wave for hover effect
     [SerializeField]
     private float hoverH = 0.1f;
     [SerializeField]
@@ -23,19 +24,19 @@ public class BeeMovement : MonoBehaviour
 
     private void Awake()
     {
+        //initial screen bounds & width
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         screenWidth = screenBounds.x * 2;
 
         beeSprite = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         HoverBee();
         MoveBee();
     }
-    void HoverBee()
+    void HoverBee() //hover up and down
     {
         Vector3 hover = new Vector3(0, hoverH * Mathf.Sin(hoverF * Time.time), 0);
         transform.position += beeSpeed * Time.deltaTime * hover;
@@ -43,6 +44,7 @@ public class BeeMovement : MonoBehaviour
 
     void MoveBee()
     {
+        //change pos based on user input
         Vector3 userMovement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
         transform.position += beeSpeed * Time.deltaTime * userMovement;
 

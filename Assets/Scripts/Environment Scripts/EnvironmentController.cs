@@ -11,7 +11,7 @@ public class EnvironmentController : MonoBehaviour
     private float blockSectionWidth;
 
     [SerializeField]
-    private GameObject groundBlockPrefab;
+    private List<GameObject> groundBlockPrefabVariations;
 
     //used to get screen bounds from bee movement component
     [SerializeField]
@@ -23,27 +23,28 @@ public class EnvironmentController : MonoBehaviour
     {
         bm = bee.GetComponent<BeeMovement>();
         blockSectionStart = 15;
-        blockSectionWidth = groundBlockPrefab.transform.localScale.x;
+        blockSectionWidth = 20; //equals groundBlockPrefab.transform.localScale.x;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if((ScreenBounds.x + screenBorder) > blockSectionStart)
         {
-            MakeBlock();
+            MakeNewBlock();
             blockSectionStart += blockSectionWidth;
         }
     }
 
-    GameObject MakeBlock()
+    GameObject MakeNewBlock()
     {
-        GameObject groundBlock = Instantiate(groundBlockPrefab);
+        int index = Random.Range(0, groundBlockPrefabVariations.Count);
+        GameObject chosenBlockPrefab = groundBlockPrefabVariations[index];
+
+        GameObject groundBlock = Instantiate(chosenBlockPrefab);
         Vector3 blockPos = new(blockSectionStart + (blockSectionWidth / 2), -4.5f, 0);
         groundBlock.transform.position = blockPos;
 
         return groundBlock;
     }
-
     
 }

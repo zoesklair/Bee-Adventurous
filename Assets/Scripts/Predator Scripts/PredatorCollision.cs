@@ -18,8 +18,6 @@ public class PredatorCollision : MonoBehaviour
         gameOverController = GameObject.Find("GameOverController").GetComponent<GameOverController>();
         predatorCollider = GetComponent<Collider2D>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (beeCollider.bounds.Intersects(predatorCollider.bounds) && Time.timeScale == 1f)

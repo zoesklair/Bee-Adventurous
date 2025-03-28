@@ -21,7 +21,7 @@ public class BackgroundRepeat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((ScreenBounds.x + 2) > BackgroundEdgePos)
+        if ((ScreenBounds.x + 2) > BackgroundEdgePos) //create new backdrop when current screen bound is nearing edge
         {
             currentBackdrop = RepeatBackdrop();
         }

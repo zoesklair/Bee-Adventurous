@@ -20,18 +20,10 @@ public class FlowerSpriteChanger : MonoBehaviour
     }
     public void UpdateFlowerSprite(FlowerSprites flowerState)
     {
-        /*switch (flowerState)
-        {
-            case FlowerSprites.NormalNoNectar:
-                spriteRenderer.sprite = flowerSpriteArray[0];
-                break;
-            case FlowerSprites.NormalWithNectar:
-                spriteRenderer.sprite = flowerSpriteArray[1];
-                break;
-            case FlowerSprites.CarnivorChomp:
-                spriteRenderer.sprite = flowerSpriteArray[2];
-                break;
-        }*/
         spriteRenderer.sprite = flowerSpriteArray[(int)flowerState];
+    }
+    public void ChangeColour(Color newColour)
+    {
+        spriteRenderer.color = newColour;
     }
 }
