@@ -7,10 +7,10 @@ public class SpawnFlowers : MonoBehaviour
     [SerializeField]
     private GameObject flowerPrefab;
 
-    private List<GameObject> containedObjects;
+    private List<GameObject> containedObjects; //store flowers to destroy when ground block is off-screen
     private ScoreController scoreController;
 
-    private float ChanceOfFlowerSpawning
+    private float ChanceOfFlowerSpawning //increase difficulty as score gets higher
     {
         get
         {
@@ -35,13 +35,13 @@ public class SpawnFlowers : MonoBehaviour
         }
     }
 
-    //[SerializeField]
-    //private float chanceOfFlowerSpawning = 0.8f;
     private void Awake()
     {
         containedObjects = new List<GameObject>();
         scoreController = GameObject.Find("ScoreController").GetComponent<ScoreController>();
     }
+
+    //flower spawning code for uniform ground
     /*GameObject SpawnFlowersOnBlock()
     {
         
@@ -90,8 +90,6 @@ public class SpawnFlowers : MonoBehaviour
     void Start()
     {
         SpawnFlowersOnSpawnPoints();
-        //GameObject spawnedFlower = SpawnFlowersOnBlock();
-        //containedObject.Add(spawnedFlower);
     }
 
     private void OnDestroy()

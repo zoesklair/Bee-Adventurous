@@ -17,7 +17,7 @@ public class DestroyGroundBlock : MonoBehaviour
 
     void Update()
     {
-        if(transform.position.x < (ScreenBounds.x - bm.screenWidth) - 10)
+        if(transform.position.x < (ScreenBounds.x - bm.screenWidth) - 10) //when ground goes past left screen edge
         {
             Destroy(gameObject);
         }

@@ -28,8 +28,7 @@ public class CarnivorousFlower1 : MonoBehaviour
     public bool flowerIsChomping = false;
 
     private float timeUntilWarn = 0.5f;
-    //private float timeUntilChomp = 0.4f;
-    private float TimeUntilChomp
+    private float TimeUntilChomp //based on score for increasing difficulty
     {
         get
         {
@@ -95,15 +94,7 @@ public class CarnivorousFlower1 : MonoBehaviour
                 {
                     isWarning = true;
                     AddWarning();
-                    Debug.Log("carnivourous flower: Warning");
                 }
-                /*if (isWarning && timeInRange > (timeUntilWarn + TimeUntilChomp))
-                {
-                    isWarning = false;
-                    timeWarning = 0;
-                    RemoveWarning();
-                    Chomp();
-                }*/
             }
             else
             {
@@ -113,7 +104,6 @@ public class CarnivorousFlower1 : MonoBehaviour
     }
     void Chomp()
     {
-        Debug.Log("carnivorousFlower: CHOMP");
         spriteChanger.UpdateFlowerSprite(FlowerSpriteChanger.FlowerSprites.CarnivorChomp);
         flowerIsChomping = true;
 
@@ -143,13 +133,5 @@ public class CarnivorousFlower1 : MonoBehaviour
     {
         Destroy(dangerNotions);
     }
-
-    //check if bee is in range
-    //if yes set bee in range = true
-    //if bee leaves, bee in range = false
-    //timer for bee in range
-    //if timer > timeUntilWarn
-    // change colour
-    //after time to warn, chomp
 
 }

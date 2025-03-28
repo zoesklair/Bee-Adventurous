@@ -19,7 +19,6 @@ public class Nectar : MonoBehaviour
         bee = GameObject.Find("Bee");
         beeEnergy = bee.GetComponent<Energy>();
     }
-    // Start is called before the first frame update
     void Start()
     {
         //flower begins with nectar

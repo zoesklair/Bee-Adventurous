@@ -24,16 +24,14 @@ public class FlowerCollision : MonoBehaviour
 
     void Update()
     {
-        if (beeCollider.bounds.Intersects(flowerCollider.bounds) && Time.timeScale == 1f)
+        if (beeCollider.bounds.Intersects(flowerCollider.bounds) && Time.timeScale == 1f) //check intersection when game is running
         {
-           
-            //Debug.Log("hit!"); //not when already chomping
-            if (carnivorFlower.flowerIsCarnivorous && carnivorFlower.flowerIsChomping)
+            if (carnivorFlower.flowerIsCarnivorous && carnivorFlower.flowerIsChomping) //chomped by carnivorous flower
             {
                 Debug.Log("FlowerCollision: eaten by flower - game over");
                 gameOverController.SetGameOver();
             }
-            if(Input.GetKeyDown(KeyCode.Space) && flowerNectar.FlowerHasNectar)
+            if(Input.GetKeyDown(KeyCode.Space) && flowerNectar.FlowerHasNectar) //collect nectar
             {
                 flowerNectar.CollectNectar();
             }

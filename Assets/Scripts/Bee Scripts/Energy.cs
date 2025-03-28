@@ -6,16 +6,17 @@ using UnityEngine.UI;
 
 public class Energy : MonoBehaviour
 {
+    //energy UI elements
     [SerializeField]
-    TMP_Text energyDisplay;
+    TMP_Text energyDisplay; //for debugging, hidden by default
     [SerializeField]
     GameObject energyBar;
     Slider energyBarSlider;
     [SerializeField]
+
     GameOverController gameOverController;
 
     public float EnergyLevel => energyLevel;
-
     private float energyLevel;
     [SerializeField]
     private float energyLevelReductionRate = 1;
@@ -25,16 +26,14 @@ public class Energy : MonoBehaviour
         energyBarSlider = energyBar.GetComponent<Slider>();
         gameOverController = GameObject.Find("GameOverController").GetComponent<GameOverController>();
     }
-    // Start is called before the first frame update
     void Start()
     {
         energyLevel = 100;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Time.timeScale == 1f)
+        if(Time.timeScale == 1f) //if game is running
         {
             ReduceEnergy();
             DisplayEnergy();
@@ -48,11 +47,10 @@ public class Energy : MonoBehaviour
     }
     void DisplayEnergy()
     {
-        //debug
+        //for debugging
         energyDisplay.text = "Energy Level: " + (int)EnergyLevel;
 
         energyBarSlider.value = EnergyLevel / 100f;
-
     }
     public void UpdateEnergy(float energyChange)
     {

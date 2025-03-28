@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class PredatorController : MonoBehaviour
 {
-    //[SerializeField]
-    //private float chanceOfPredatorPerBlock = 0.5f;
     [SerializeField]
     GameObject predatorPrefab;
     GameObject predatorInstance;
     private GameObject groundBlock;
     private ScoreController scoreController;
 
-    private float ChanceOfPredator
+    private float ChanceOfPredator //based on score - for increasing difficulty
     {
         get
         {
@@ -34,7 +32,6 @@ public class PredatorController : MonoBehaviour
         groundBlock = transform.gameObject;
         scoreController = GameObject.Find("ScoreController").GetComponent<ScoreController>();
     }
-    // Start is called before the first frame update
     void Start()
     {
         if(Random.value < ChanceOfPredator)
@@ -42,11 +39,9 @@ public class PredatorController : MonoBehaviour
             SpawnPredator();
         }
     }
-
     void SpawnPredator()
     {
         //get random vertical pos between 9 and -1
-        //float verticalPos = (Random.value * 10) - 1;
         float verticalPos = Random.Range(-1, 9);
         float horizPos = groundBlock.transform.position.x;
         //if vertical position is high, chance of parrot spawning from above instead of the side

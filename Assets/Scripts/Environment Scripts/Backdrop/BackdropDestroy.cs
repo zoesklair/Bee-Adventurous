@@ -13,7 +13,7 @@ public class BackdropDestroy : MonoBehaviour
     }
     void Update()
     {
-        if (transform.position.x < (ScreenBounds.x - 2*bm.screenWidth) - 2)
+        if (transform.position.x < (ScreenBounds.x - 2*bm.screenWidth) - 2) //if off screen
         {
             Destroy(gameObject);
         }
